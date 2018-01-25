@@ -111,15 +111,16 @@ fi
 printf "\nAll image from bing:\n\n"
 ls -al $dir/ | grep jpg
 printf "\n\t\t\t\t\t\t\t\t Enjoy it~\n"
-
-# ================================== Something bak ==================================
-:<<!EOF!
-dep_wget=`wget --help`
-dep_pip=`pip -h`
-dep_curl=`curl --help`
-sudo easy_install pip
-sudo pip install requests
-file_name=$(date +"%Y%m%d").jpg
-python ./0-bing.py
-mv *.jpg /Users/$(whoami)/Pictures/Bing/
-!EOF!
+printf "\n\nOpen Bing dir? \n\t\t\t\t\t\tyes or no?\n"
+read -n 3 -p "Your choice:" answer; echo
+if [[ $answer =~ "yes" ]]; then
+  if [ $platform -eq 1 ]; then
+    open ~/Pictures/Bing
+  else
+    nautilus ~/Bing
+  fi
+elif [[ $answer =~ "no" ]]; then
+  echo OK~
+else echo "\t\t\t\t\t\tWhat the fuck?"
+fi
+# ================================== Done~ ==================================
